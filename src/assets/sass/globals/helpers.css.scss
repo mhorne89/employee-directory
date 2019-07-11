@@ -1,0 +1,98 @@
+// Layout and display helpers
+// Styleguide 1.0.
+
+//-------------------------------------
+// Display
+//-------------------------------------
+
+%inline {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+//-------------------------------------
+// Custom float clearing
+//-------------------------------------
+
+@mixin omega-reset($nth) {
+  &:nth-child(#{$nth}) { margin-right: flex-gutter(); }
+  &:nth-child(#{$nth}+1) { clear: none }
+}
+
+//-------------------------------------
+// Alignment
+//-------------------------------------
+
+%vertical-align {
+  @include transform(translate3d(0, -50%, 0));
+  position: relative;
+  top: 50%;
+}
+
+//-------------------------------------
+// Buttons and inputs
+//-------------------------------------
+
+%button {
+  @include transition(all .2s cubic-bezier(.4, .0, .2, 1));
+  width: 100%;
+  font-family: $fontFamilyDisplay;
+  font-size: 1em;
+  border-radius: 20px;
+  text-shadow: 0 1px 0px rgba(black, .2);
+  text-align: center;
+  padding: .8em 1.6em .6em;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: $colorMediumBlue;
+  color: $colorOffWhite;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: block;
+
+  &:hover,
+  &:active,
+  &:focus {
+    @include transition(all .2s cubic-bezier(.4, .0, .2, 1));
+    background: darken($colorMediumBlue, 5%);
+    color: $colorOffWhite;
+  }
+
+  a, a:link, a:visited, a:hover, a:active, a:focus { color: $colorOffWhite }
+
+  &.outline {
+    border: 1px solid $colorOffWhite;
+    color: $colorOffWhite;
+    background-color: rgba(255, 255, 255, 0.1);
+
+    &:hover,
+    &:active,
+    &:focus {
+      @include transition(all .2s cubic-bezier(.4, .0, .2, 1));
+      background-color: rgba(255, 255, 255, 0.4);
+      color: $colorOffWhite;
+    }
+  }
+}
+
+//-------------------------------------
+// Bold text
+//-------------------------------------
+
+%bolden {
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: .9em;
+}
+
+//-------------------------------------
+// Static URL
+//-------------------------------------
+
+@mixin static-image($url, $position: center center, $size: null, $repeat: no-repeat) {
+  background-image: url('#{$url}');
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}

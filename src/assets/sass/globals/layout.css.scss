@@ -1,0 +1,52 @@
+//-------------------------------------
+// Layout & comp.
+//-------------------------------------
+
+body { background: $bodyColor }
+
+.sprite {
+  @include size(0);
+  position: absolute;
+  visibility: hidden;
+}
+
+.outer-container, .inner-container {
+  @include row;
+  max-width: 1200px;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin: 0 auto;
+}
+
+.inner-container { max-width: 1000px }
+
+.half {
+  @include span-columns(6 of 12);
+  @include omega(2n);
+}
+
+.main-content {
+  &.page {
+    section {
+      @include row;
+      padding: 6em 0;
+    }
+  }
+}
+
+.loading-screen {
+  @include transition(opacity .2s ease-in-out .7s);
+  @include position(fixed, 0 0 0 0);
+  background-image: url('./assets/images/splash.jpg');
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  opacity: 0;
+}
+
+my-app:empty + .loading-screen { opacity: 1 }
+
+.navigation {
+  @include position(fixed, null 2em 1.5em null);
+  @include size(2.5em);
+}

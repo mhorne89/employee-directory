@@ -1,0 +1,122 @@
+#employees {
+  .outer-container { margin-top: 2em }
+  
+  .header-image {
+    max-width: 500px;
+    margin: 0 auto 4em;
+  }
+
+  input {
+    width: 95%;
+    margin: 0 auto 3em;
+    padding: 10px;
+    border: none;
+    border-bottom: solid 2px lighten($colorMediumBlue, 30%);
+    box-shadow: 0 2px 7px rgba(17,17,17,.3);
+    transition: border 0.3s;
+  }
+
+  input[type="text"]:focus,
+  input[type="text"].focus {
+    border-bottom: solid 2px $colorPrimary;
+  }
+
+  input::placeholder { color: lighten($colorMediumBlue, 30%) }
+
+  ul {  
+    li {
+      @include span-columns(10 of 10);
+      @include omega(1n);
+      @include size(100% 22em);
+      text-align: center;
+      position: relative;
+
+      @include media($breakTabletPortrait) {
+        @include omega-reset(1n);
+        @i@include span-columns(3 of 10);
+        @include omega(3n);
+        @include size(31% 22em);
+      }
+
+      @include media($breakTabletLandscape) {
+        @include omega-reset(3n);
+        @include span-columns(2 of 10);
+        @include omega(5n);
+        @include size(17.75% 22em);
+      }
+    }
+  }
+
+  .employee-image {
+    @include size(10em);
+    position: relative;
+    border-radius: 50%;
+    margin: 0 auto;
+    background-size: cover;
+    border: 3px solid $colorPrimary;
+    box-shadow: 0 2px 10px rgba(17,17,17,.2);
+
+    @include media($breakTabletPortrait) { @include size(10em) }
+    
+    &:hover ~ .about-me { display: block; }
+  }
+
+  .employee-company {
+    @include size(1.9em);
+    @include position(absolute, 7.9em -.2em null null);
+    border-radius: 50%;
+    background-size: cover;
+    border: 1px solid $colorMediumBlue;
+    z-index: -1;
+  }
+
+  h1 {
+    text-align: center;
+    color: $colorMediumBlue;
+    margin-bottom: 1em;
+  }
+
+  h3 { margin: 1em 0 -.4em }
+
+  p {
+    margin-bottom: 0em;
+    font-size: .9em;
+  }
+
+  .contact {
+    display: table;
+    margin: .5em auto;
+
+    img {
+      @include size(1.5em);
+      float: left;
+      margin: 0 .2em;
+    }
+  }
+
+  .about-me {
+    @include position(absolute, 11em null null null);
+    background: $colorMediumBlue;
+    padding: 1em;
+    border-radius: 5px;
+    color: $colorOffWhite;
+    width: 100%;
+    display: none;
+    
+    p { margin: 0 }
+  }
+
+  .about-me:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 10px solid transparent;
+    border-bottom-color: $colorMediumBlue;
+    border-top: 0;
+    margin-left: -10px;
+    margin-top: -10px;
+  }
+}

@@ -1,0 +1,58 @@
+// Forms, inputs, fieldsets, etc.
+// Styleguide 1.0.
+
+.error {
+  background: $colorLightRed;
+  border: 1px solid $colorMediumRed;
+  border-radius: 3px;
+  color: $colorDarkGrey;
+  padding: .5em 1em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.success {
+  background: $colorLightGreen;
+  border: 1px solid $colorMediumGreen;
+  border-radius: 3px;
+  color: $colorDarkGrey;
+  padding: .5em 1em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+form {
+  width: 100%;
+  margin: 0 auto 2em;
+
+  @include media($breakTabletPortrait) { width: 30% }
+}
+
+label {
+  @include transition(color .2s);
+  display: block;
+  margin-bottom: 1px;
+  font-size: em(10, 14);
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $colorDarkGrey;
+}
+
+input { display: block }
+
+.frontpage-input {
+  width: 95%;
+  transition: border-color .2s;
+  outline: none;
+  background: white;
+  height: 3.3em;
+  border-radius: 3px;
+  padding: .8em 1em;
+  margin: 0 1em 3em;
+}
+
+textarea { height: 15em }
+
+form hr { margin: 2em 0 }
+
+.submit { @extend %button }

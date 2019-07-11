@@ -1,0 +1,27 @@
+<div id="employees">
+  <div class="outer-container">
+    <p style="text-align: center; text-transform: uppercase; font-weight: bold;">Say hello to the</p>
+    <img class="header-image" src="./assets/images/header.jpg">
+    <input class="frontpage-input" type="text" #listFilter (keyup)="filterList(listFilter.value)" placeholder="Who would you like to talk to?" autofocus>
+
+    <ul>
+      <li *ngFor="let employee of employees | orderBy: 'order' | filterBy: ['name', 'job_title', 'department']: filter ">
+        <div *ngIf="employee?.avatar" class="employee-image" [ngStyle]="{'background-image': 'url(' + employee?.avatar + ')'}"></div>
+        <div *ngIf="!employee?.avatar" class="employee-image" [ngStyle]="{'background-image': 'url(/assets/images/default.png)'}"></div>
+
+        <h3>{{ employee.name }}</h3>
+        <p>{{ employee.role }}</p>
+        <small>{{ employee.department }}</small>
+
+        <div class="contact">
+          <a href="mailto:{{ employee.email }}" *ngIf="employee.email">
+            <img src="./assets/svgs/email.svg" alt="Email Employee" />
+          </a>
+          <a [href]="employee.slack | safe: employee.slack" *ngIf="employee.slack">
+            <img src="./assets/svgs/slack.svg" alt="Chat to on Slack" />
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
