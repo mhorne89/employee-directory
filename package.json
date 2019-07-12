@@ -1,13 +1,15 @@
 {
   "name": "amorelie-employee-directory",
   "version": "1.0.0",
+  "engines": {
+    "node": "10.3.0"
+  },
   "scripts": {
     "dev": "npm run dev:server & npm run dev:client",
     "dev:client": "ng serve",
     "dev:server": "nodemon ./server.js localhost 8081",
     "prod": "nodemon ./server.js localhost 8081",
-    "build": "./build.sh",
-    "deploy": "./deploy.sh"
+    "build": "ng build --env=prod"
   },
   "dependencies": {
     "@angular/animations": "^8.1.1",
