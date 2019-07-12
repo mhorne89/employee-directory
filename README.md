@@ -1,6 +1,6 @@
-# Conichi Employee Directory
+# Amorelie Employee Directory
 
-This is the Conichi Employee Directory for internal use of Conichi employees.
+This is the Amorelie Employee Directory for internal use of Amorelie employees.
 
 ### Development server
 

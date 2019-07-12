@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response,  } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
 export class EmployeeService {
   nodeUrl: string;
 
-  constructor (private http: Http, private location: Location) {
+  constructor (private http: HttpClient, private location: Location) {
     this.setNodeUrl();
   }
 
@@ -23,18 +23,6 @@ export class EmployeeService {
   }
 
   getEmployees() {
-    return this.http.get(`${ this.nodeUrl }/get-employees`).map(this.handleSuccess).catch(this.handleError);
-  }
-
-  // Function to handle successful response
-  private handleSuccess (res: Response) {
-    console.log(`%c Successfull retrieved data: ${ res.status }`, 'color: #4F8A10');
-    return res.json();
-  }
-
-  // Function to handle error in response
-  private handleError (error: Response | any) {
-    console.log(`%c Error: ${ error.status }: ${ error.statusText }`, 'color: #D8000C');
-    return Observable.throw(`${ error.status }: ${ error.statusText }`);
+    return this.http.get(`${ this.nodeUrl }/get-employees`);
   }
 }
