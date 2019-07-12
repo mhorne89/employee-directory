@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { forEach } from 'lodash';
 
 import { EmployeeService } from '../services/employees.service';
 
@@ -17,7 +16,7 @@ export class AppComponent {
   storeEmployees(employees) {
     const formattedEmployees = [];
 
-    forEach(employees.items, function(employee) {      
+    employees.items.forEach((employee) => {      
       if (employee['fields']['image'] && employee['fields']['image']['fields']) {
         employee['fields']['picture'] = employee['fields']['image']['fields']['file']['url'];
       } else {
