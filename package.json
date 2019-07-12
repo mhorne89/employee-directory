@@ -2,7 +2,7 @@
   "name": "amorelie-employee-directory",
   "version": "1.0.0",
   "engines": {
-    "node": "10.3.0"
+    "node": "12.6.0"
   },
   "scripts": {
     "dev": "npm run dev:server & npm run dev:client",
