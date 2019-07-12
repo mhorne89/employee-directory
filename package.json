@@ -9,7 +9,7 @@
     "dev:client": "ng serve",
     "dev:server": "nodemon ./server.js localhost 8081",
     "prod": "nodemon ./server.js localhost 8081",
-    "build": "ng build --env=prod"
+    "build": "ng build --prod"
   },
   "dependencies": {
     "@angular/animations": "^8.1.1",
