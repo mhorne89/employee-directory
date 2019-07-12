@@ -7,8 +7,8 @@
   "scripts": {
     "dev": "npm run dev:server & npm run dev:client",
     "dev:client": "ng serve",
-    "dev:server": "nodemon ./server.js localhost 8081",
-    "prod": "nodemon ./server.js localhost 8081",
+    "dev:server": "nodemon ./server.js localhost 5000",
+    "prod": "nodemon ./server.js localhost 5000",
     "build": "ng build --prod"
   },
   "dependencies": {

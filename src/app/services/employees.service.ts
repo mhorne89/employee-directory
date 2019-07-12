@@ -18,7 +18,7 @@ export class EmployeeService {
 
   // Sets Node URL depending on environment
   setNodeUrl() {
-    const nodePort = (environment.production) ? '' : ':8081';
+    const nodePort = (environment.production) ? '' : ':5000';
     this.nodeUrl = `${ location.protocol }//${ location.hostname }${ nodePort }`;
   }
 

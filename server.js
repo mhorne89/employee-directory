@@ -44,6 +44,6 @@ require('./production_server').serve(app, express)
 * in the .env file.
 */
 
-app.listen(process.env.NODE_PORT || 5000, () => {
-  console.log(`Node server running on port ${ process.env.NODE_PORT }`)
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`Node server running on port ${ process.env.PORT }`)
 })
