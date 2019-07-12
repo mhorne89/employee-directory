@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(ipWhitelist(ipWhitelist.array(['127.0.0.1', '37.44.1.250'])));
+// app.use(ipWhitelist(ipWhitelist.array(['127.0.0.1', '::1','37.44.1.250'])));
 
 const client = contentful.createClient({
   accessToken:'OynZDziFyP5Dowa7l-n10Eqr8fZQxWcbTVkuLA-aDEA',
