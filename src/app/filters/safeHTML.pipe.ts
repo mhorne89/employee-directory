@@ -7,6 +7,6 @@ export class SafePipe implements PipeTransform {
   constructor(protected _sanitizer: DomSanitizer) {}
 
   public transform(value: string): SafeHtml | SafeStyle | SafeScript | SafeUrl | SafeResourceUrl {
-    return this._sanitizer.bypassSecurityTrustUrl('slack://user?team=T02K8Q4RU&id=' + value);
+    return this._sanitizer.bypassSecurityTrustUrl('slack://user?team=T03V4KJ79&id=' + value);
   }
 }
