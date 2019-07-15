@@ -15,7 +15,12 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(ipWhitelist(ipWhitelist.array(['127.0.0.1', '::1','37.44.1.250'])));
+app.use(ipWhitelist(ipWhitelist.array([
+  '127.0.0.1',
+  '::1','37.44.1.250',
+  '::ffff:10.14.49.90',
+  '10.14.49.90'
+])));
 
 app.use(ipWhitelist(ip => {
     console.log(ip);
