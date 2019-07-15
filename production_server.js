@@ -7,9 +7,9 @@ require('dotenv').config()
 
 exports.serve = function (app, express) {
   if (process.env.NODE_ENV === 'production') {
-    app.set('port', process.env.APP_PORT)
+    app.set('port', process.env.APP_PORT);
 
-    app.use(express.static(path.join(__dirname, 'dist')))
+    app.use(express.static(path.join(__dirname, 'dist')));
 
     app.use((req, res, next) => {
       res.header("Content-Security-Policy",
@@ -22,7 +22,7 @@ exports.serve = function (app, express) {
       else { next(); }
     });
 
-    app.get('*', (req, res) => {
+    app.use((req, res, next) => {
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
       console.log(ip);
       
@@ -34,10 +34,14 @@ exports.serve = function (app, express) {
         '10.14.49.90'
       ];
       
-      if (whitelist.includes(ip))
-        res.sendFile(path.join(__dirname, 'dist/index.html'));
-      else 
+      if (!whitelist.includes(ip))
         res.status(403).send('Forbidden').end();
+      else
+        next();
+    });
+
+    app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname, 'dist/index.html'));
     });
 
     const server = http.createServer(app);
