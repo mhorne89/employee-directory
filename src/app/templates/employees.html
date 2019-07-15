@@ -5,6 +5,10 @@
     <input class="frontpage-input" type="text" #listFilter (keyup)="filterList(listFilter.value)" placeholder="Who would you like to talk to?" autofocus>
 
     <ul *ngFor="let department of departments">
+      <div class="bar" *ngIf="!filter">
+        <span>{{ department[0].department }}</span>
+      </div>
+      
       <li *ngFor="let employee of department | orderBy: 'order' | filterBy: ['name', 'job_title', 'department']: filter"
           [style.clear]="filter ? 'none' : 'inherit'">
         <div *ngIf="employee?.avatar" class="employee-image" [ngStyle]="{'background-image': 'url(' + employee?.avatar + ')'}"></div>
@@ -23,8 +27,6 @@
           </a>
         </div>
       </li>
-      
-      <div class="bar" *ngIf="!filter"></div>
     </ul>
   </div>
 </div>

@@ -50,10 +50,19 @@
     .bar {
       @include media($breakTabletPortrait) {
         @include size(90% 2px);
-        margin: 0 auto 2em;
+        margin: 0 auto 3em;
         background: $colorLightGrey;
         display: block;
         clear: both;
+
+        span {
+          text-transform: uppercase;
+          padding-right: 1em;
+          color: darken($colorLightGrey, 20%);
+          background: $bodyColor;
+          position: relative;
+          top: -.6em;
+        }
       }
     }
   }
