@@ -4,8 +4,9 @@
     <img class="header-image" src="./assets/images/header.jpg">
     <input class="frontpage-input" type="text" #listFilter (keyup)="filterList(listFilter.value)" placeholder="Who would you like to talk to?" autofocus>
 
-    <ul>
-      <li *ngFor="let employee of employees | orderBy: 'order' | filterBy: ['name', 'job_title', 'department']: filter ">
+    <ul *ngFor="let department of departments">
+      <li *ngFor="let employee of department | orderBy: 'order' | filterBy: ['name', 'job_title', 'department']: filter"
+          [style.clear]="filter ? 'none' : 'inherit'">
         <div *ngIf="employee?.avatar" class="employee-image" [ngStyle]="{'background-image': 'url(' + employee?.avatar + ')'}"></div>
         <div *ngIf="!employee?.avatar" class="employee-image" [ngStyle]="{'background-image': 'url(/assets/images/default.png)'}"></div>
 
@@ -22,6 +23,8 @@
           </a>
         </div>
       </li>
+      
+      <div class="bar" *ngIf="!filter"></div>
     </ul>
   </div>
 </div>
