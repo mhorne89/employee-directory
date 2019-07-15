@@ -5,10 +5,9 @@ const path = require('path')
 // Config
 require('dotenv').config()
 
-exports.serve = function (app, express) {
+exports.serve = (app, express) => {
+  console.log('Fuckshit!');
   if (process.env.NODE_ENV === 'production') {
-    app.set('port', process.env.APP_PORT);
-
     app.use(express.static(path.join(__dirname, 'dist')));
 
     app.use((req, res, next) => {
@@ -22,6 +21,7 @@ exports.serve = function (app, express) {
       else { next(); }
     });
 
+    console.log('Shitfuck!');
     app.use((req, res, next) => {
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
       console.log(ip);
@@ -34,10 +34,11 @@ exports.serve = function (app, express) {
         '10.14.49.90'
       ];
       
-      if (!whitelist.includes(ip))
+      if (!whitelist.includes(ip)) {
         res.status(403).send('Forbidden').end();
-      else
+      } else {
         next();
+      }
     });
 
     app.get('*', (req, res) => {
