@@ -24,6 +24,7 @@ exports.serve = function (app, express) {
 
     app.get('*', (req, res) => {
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+      console.log(ip);
       
       const whitelist = [
         '127.0.0.1',
