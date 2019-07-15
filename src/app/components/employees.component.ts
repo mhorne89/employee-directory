@@ -17,34 +17,43 @@ export class EmployeeComponent {
   }
 
   filterList(value) { this.filter = (value === '') ? null : value; }
-    
+
   processEmployees(employees) {
     const order = [
       'Management',
-      'People & Culture',
-      'Brand',
-      'Marketing',
-      'Graphics',
-      'Buying & Supply Chain',
-      'Finance',
-      'Accounting',
+      'Amorelie Labels',
+      'B2B',
       'BI',
-      'Product',
+      'Brand',
+      'Business Development',
+      'Buying & Supply Chain',
+      'Content',
+      'Customer Care',
+      'Finance',
+      'Graphics',
       'IT',
+      'Legal',
+      'Marketing',
+      'Marketplaces',
+      'Office Management',
       'Operations',
-      'Customer Care'
+      'PR & Social Media',
+      'People & Culture',
+      'Product',
+      'Shop Management',
+      'Toyparty'
     ];
-    
+
     const departments_grouped = groupBy(employees, 'department');
     const departments_ordered = [];
-    
+
     order.forEach((department) => {
       departments_ordered[department] = departments_grouped[department];
       delete departments_grouped[department];
     });
-    
+
     departments_ordered['undefined'] = departments_grouped['undefined'];
-        
+
     const arrayed = Object.values(departments_ordered);
     this.departments = arrayed;
   }

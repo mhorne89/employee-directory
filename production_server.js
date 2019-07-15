@@ -6,7 +6,6 @@ const path = require('path')
 require('dotenv').config()
 
 exports.serve = (app, express) => {
-  console.log('Fuckshit!');
   if (process.env.NODE_ENV === 'production') {
     app.use(express.static(path.join(__dirname, 'dist')));
 
@@ -21,7 +20,6 @@ exports.serve = (app, express) => {
       else { next(); }
     });
 
-    console.log('Shitfuck!');
     app.use((req, res, next) => {
       const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
       console.log(ip);

@@ -34,7 +34,7 @@ app.get('/get-employees', function (req, res) {
 * When developing locally, use `npm run dev` and the app will be served by the Angular CLI
 */
 
-require('./production_server').serve(app, express)
+require('./production_server').serve(app, express);
 
 
 /*
