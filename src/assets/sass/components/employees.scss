@@ -27,7 +27,7 @@
     li {
       @include span-columns(10 of 10);
       @include omega(1n);
-      @include size(100% 20em);
+      @include size(100% 21em);
       text-align: center;
       position: relative;
       margin-top: 1em;
@@ -36,14 +36,14 @@
         @include omega-reset(1n);
         @i@include span-columns(3 of 10);
         @include omega(3n);
-        @include size(31% 22em);
+        @include size(31% 21em);
       }
 
       @include media($breakTabletLandscape) {
         @include omega-reset(3n);
         @include span-columns(2 of 10);
         @include omega(5n);
-        @include size(17.75% 20em);
+        @include size(17.75% 21em);
       }
     }
 

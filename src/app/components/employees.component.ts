@@ -19,19 +19,33 @@ export class EmployeeComponent {
   filterList(value) { this.filter = (value === '') ? null : value; }
     
   processEmployees(employees) {
-    const grouped = groupBy(employees, 'department');
-    const management = grouped['Management'];
-    const not_defined = grouped['undefined'];
-    delete grouped['Management'];
-    delete grouped['undefined'];
+    const order = [
+      'Management',
+      'People & Culture',
+      'Brand',
+      'Marketing',
+      'Graphics',
+      'Buying & Supply Chain',
+      'Finance',
+      'Accounting',
+      'BI',
+      'Product',
+      'IT',
+      'Operations',
+      'Customer Care'
+    ];
     
-    const arrayed = Object.values(grouped);
-    const arrayed_management = Object.values(management);
-    const arrayed_undefined = Object.values(not_defined);
+    const departments_grouped = groupBy(employees, 'department');
+    const departments_ordered = [];
     
-    arrayed.unshift(arrayed_management)
-    arrayed.push(arrayed_undefined);
+    order.forEach((department) => {
+      departments_ordered[department] = departments_grouped[department];
+      delete departments_grouped[department];
+    });
     
+    departments_ordered['undefined'] = departments_grouped['undefined'];
+        
+    const arrayed = Object.values(departments_ordered);
     this.departments = arrayed;
   }
 }
